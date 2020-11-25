@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Travel</title>
+</head>
+<body>
+  <ul id="root">
+    <li>
+      <ul>
+        <li></li>
+        <li>
+          <ul></ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    function BFS(node) {
+      var arr = [];
+      var depth = 0;
+      arr.push(node);
+
+      while (arr.length > 0) {
+        node = arr.shift();
+        console.log(node)
+        if (node.children.length) {
+          depth += 1;
+          for (var i = 0; i < node.children.length; i++) {
+            arr.push(node.children[i]);
+          }
+        }
+      }
+
+      return depth;
+    }
+
+    const result = BFS(document.getElementById('root'));
+    console.log(result)
+  </script>
+</body>
+</html>
